@@ -81,10 +81,9 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    host: <%= Rails.application.credentials.dig(:postgres, :host) %>
-    database: d47r84fuk0eljs
-    username: <%= Rails.application.credentials.dig(:postgres, :user) %>
-    password: <%= Rails.application.credentials.dig(:postgres, :password) %>
+    url: <%= ENV["DATABASE_URL"] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+
   cache:
     <<: *primary_production
     database: pipeview_inspections_production_cache
