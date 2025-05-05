@@ -1,7 +1,3 @@
 class Appointment < ApplicationRecord
-	def new
-		@appointment = Appointment.new
-	end
-	
-	def create;end
+  validates :name, :email, :phone, :preferred_time, presence: true
 end
