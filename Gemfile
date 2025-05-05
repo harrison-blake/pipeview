@@ -4,8 +4,12 @@ gem "rails", "~> 8.0.2"
 gem "propshaft"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
+gem "jsbundling-rails", "~> 1.3"
 gem "tailwindcss-rails"
 gem "thruster", require: false
+
+
+
 # gem "bcrypt", "~> 3.1.7"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable

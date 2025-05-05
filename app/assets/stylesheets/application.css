@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+body {
+  font-family: 'EB Garamond', serif;
+}
+
+
+.main-content {
+  font-family: 'EB Garamond', serif;
+}

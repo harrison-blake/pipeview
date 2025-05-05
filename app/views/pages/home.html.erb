@@ -1,15 +1,72 @@
-<div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-10 mt-8">
-  <h1 class="text-4xl font-bold text-indigo-700 mb-6 text-center">Welcome to PipeView Inspections</h1>
+<div class="w-full max-w-4xl bg-overlay shadow-xl rounded-2xl p-10 space-y-8">
 
-  <p class="text-lg text-gray-700 mb-6">
-    We are a family-owned and operated business based in Lutherville-Timonium, Maryland. Our lead technician brings over five years of experience inspecting sewer lines for corrosion, breaks, roots, bellies, and pipe separations.
-  </p>
+  <!-- Heading + Intro -->
+  <h1 class="text-4xl font-bold text-emerald-800 text-center">Welcome to PipeView Inspections</h1>
 
-  <p class="text-lg text-gray-700 mb-6">
-    Our mission is to provide clear, detailed video documentation and honest assessments to our clients. We treat every property with the utmost respect, just as if it were our own.
-  </p>
+  <!-- Tabs -->
+  <div class="flex space-x-4 justify-center my-8">
+    <button data-tab-button="about" class="px-4 py-2 rounded bg-emerald-700 text-white">About</button>
+    <button data-tab-button="services" class="px-4 py-2 rounded bg-gray-200 text-gray-800">Services</button>
+    <button data-tab-button="contact" class="px-4 py-2 rounded bg-gray-200 text-gray-800">Contact</button>
+  </div>
 
-  <p class="text-lg text-gray-700">
-    Thank you for considering PipeView Inspections — we look forward to serving you with professionalism and care.
-  </p>
+  <!-- Tab Content: About (default visible) -->
+  <div data-tab-content="about">
+    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">About</h2>
+    <p class="text-lg text-gray-800 leading-relaxed">
+      We are a family-owned and operated business based in Lutherville-Timonium, Maryland. Our lead technician brings over five years of experience inspecting sewer lines for corrosion, breaks, roots, bellies, and pipe separations.
+    </p>
+
+    <p class="text-lg text-gray-800 leading-relaxed">
+      Our mission is to provide clear, detailed video documentation and honest assessments to our clients. We treat every property with the utmost respect, just as if it were our own.
+    </p>
+
+    <p class="text-lg text-gray-800 leading-relaxed">
+      Thank you for considering PipeView Inspections — we look forward to serving you with professionalism and care.
+    </p>
+  </div>
+
+  <!-- Tab Content: Services (initially hidden) -->
+  <div data-tab-content="services" class="hidden">
+    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">Services</h2>
+
+    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+      <li>Camera through the cleanout – <span class="font-medium">$285</span></li>
+      <li>Camera through the toilet – <span class="font-medium">$350</span></li>
+    </ul>
+
+    <p class="text-lg text-gray-700 mt-2">
+      We can provide video documentation via email or flash drive.
+    </p>
+  </div>
+
+  <!-- Tab Content: Contact (initially hidden) -->
+  <div data-tab-content="contact" class="hidden">
+    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">Contact</h2>
+
+    <p class="text-lg text-gray-700">
+      Email us at 
+      <a href="mailto:pipeviewinspections@gmail.com" class="text-emerald-800 font-medium">pipeviewinspections@gmail.com</a> 
+      or call 
+      <a href="tel:4438419633" class="text-emerald-800 font-medium">443 841-9633</a>.
+    </p>
+
+    <p class="text-lg text-gray-700">
+      We respond within 24 hours during our regular operating hours.
+    </p>
+    <div class="text-center mt-6">
+      <a href="/scheduler" class="inline-block bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow transition">
+        Schedule an Inspection
+      </a>
+    </div>
+  </div>
+
+  <!-- Operating Hours (Always visible) -->
+  <hr class="border-gray-300 my-6">
+  <h2 class="text-2xl font-semibold text-emerald-800">Operating Hours</h2>
+  <ul class="list-disc list-inside text-gray-700 text-lg space-y-1">
+    <li>Monday – Friday: 2 PM – 8 PM</li>
+    <li>Saturday: 8 AM – 6 PM</li>
+    <li>Sunday: 8 AM – 6 PM</li>
+  </ul>
 </div>

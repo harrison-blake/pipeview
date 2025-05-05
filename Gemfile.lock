@@ -98,6 +98,8 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jsbundling-rails (1.3.1)
+      railties (>= 6.0.0)
     json (2.11.3)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
@@ -294,6 +296,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  jsbundling-rails (~> 1.3)
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
