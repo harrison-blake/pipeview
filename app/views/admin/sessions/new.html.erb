@@ -1,0 +1,15 @@
+<h1 class="text-2xl font-bold mb-4">Admin Login</h1>
+
+<%= form_with url: admin_login_path, local: true do |f| %>
+  <div class="mb-4">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, nil, class: "border rounded w-full" %>
+  </div>
+
+  <div class="mb-4">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, class: "border rounded w-full" %>
+  </div>
+
+  <%= submit_tag "Log in", class: "bg-emerald-600 text-white px-4 py-2 rounded" %>
+<% end %>
