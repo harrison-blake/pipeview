@@ -1,6 +1,4 @@
 class Admin::SessionsController < ApplicationController
-  layout "admin" # optional: use separate layout
-
   def new; end
 
   def create
