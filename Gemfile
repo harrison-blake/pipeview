@@ -7,10 +7,7 @@ gem "puma", ">= 5.0"
 gem "jsbundling-rails", "~> 1.3"
 gem "tailwindcss-rails"
 gem "thruster", require: false
-
-
-
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
