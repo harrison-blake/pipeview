@@ -21,14 +21,21 @@ class AppointmentsController < ApplicationController
 	def appointment_params
     	params.require(:appointment).permit(:name, :email, :phone, :preferred_time)
   	end
+
 	def generate_slots_by_day(start_date, end_date)
   		booked = Appointment.where(preferred_time: start_date.beginning_of_day..end_date.end_of_day).pluck(:preferred_time)
 
   		(start_date..end_date).each_with_object({}) do |day, hash|
-    		hours = day.saturday? || day.sunday? ? 8..17 : 14..19
+    		hours = (day.saturday? || day.sunday?) ? 8..18 : 14..20
     		slots = hours.map { |h| Time.zone.local(day.year, day.month, day.day, h) }
     		available = slots.reject { |slot| booked.include?(slot) }
-    		hash[day.to_s] = available.map(&:iso8601)
+
+    		hash[day.to_s] = available.map do |slot|
+      		{
+        		time: slot.iso8601,
+        		label: slot.strftime("%-I:%M %p") # Eastern Time label
+      		}
+    		end
   		end
 	end
 end

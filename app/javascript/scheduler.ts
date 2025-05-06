@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const raw = root.getAttribute("data-slots-by-day");
   if (!raw) return;
 
-  const allSlotsByDay = JSON.parse(raw) as Record<string, string[]>;
+  type Slot = { time: string; label: string };
+  const allSlotsByDay = JSON.parse(raw) as Record<string, Slot[]>;
 
   // Parse and sort all dates
   const allDays = Object.keys(allSlotsByDay).sort();
@@ -53,8 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     selectedBtn.classList.add("bg-emerald-700", "text-white");
 
-    slots.forEach((slotStr) => {
-      const slotDate = new Date(slotStr);
+    slots.forEach((slot) => {
+      const slotDate = new Date(slot.time);
       const label = slotDate.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
       const btn = document.createElement("button");
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.className = "px-3 py-2 rounded bg-gray-100 hover:bg-emerald-200 w-full";
 
       btn.addEventListener("click", () => {
-        hiddenInput.value = slotStr;
+        hiddenInput.value = slot.time;
         document.querySelectorAll("#time-slots button").forEach((b) => {
           b.classList.remove("bg-emerald-700", "text-white");
           b.classList.add("bg-gray-100");
@@ -77,18 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   prevBtn.addEventListener("click", () => {
     if (currentWeekIndex > 0) {
-      const firstDayOfPrevWeek = weeks[currentWeekIndex - 1][0];
-      const today = new Date().toISOString().split("T")[0];
-
-      if (firstDayOfPrevWeek >= today) {
-        currentWeekIndex--;
-        renderWeek(currentWeekIndex);
-        timeSlotContainer.innerHTML = "";
-        hiddenInput.value = "";
-      }
+      currentWeekIndex--;
+      renderWeek(currentWeekIndex);
+      timeSlotContainer.innerHTML = "";
+      hiddenInput.value = "";
     }
   });
-
 
   nextBtn.addEventListener("click", () => {
     if (currentWeekIndex < weeks.length - 1) {
