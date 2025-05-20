@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 	def new
   		@appointment = Appointment.new
-  		@slots_by_day = generate_slots_by_day(Date.current, 3.months.from_now.to_date)
+  		@slots_by_day = generate_slots_by_day(Date.current)
 	end
 
 	def create
@@ -22,20 +22,28 @@ class AppointmentsController < ApplicationController
     	params.require(:appointment).permit(:name, :email, :phone, :preferred_time)
   	end
 
-	def generate_slots_by_day(start_date, end_date)
-  		booked = Appointment.where(preferred_time: start_date.beginning_of_day..end_date.end_of_day).pluck(:preferred_time)
+	def generate_slots_by_day(start_date)
+		booked = Appointment.pluck(:preferred_time)
 
-  		(start_date..end_date).each_with_object({}) do |day, hash|
-    		hours = (day.saturday? || day.sunday?) ? 8..18 : 14..20
-    		slots = hours.map { |h| Time.zone.local(day.year, day.month, day.day, h) }
-    		available = slots.reject { |slot| booked.include?(slot) }
+		dates = (Date.today..Date.today.next_month(3)).each_with_object({}) do |day, hash|
+			if day.saturday? || day.sunday?
+				range = (8..18).map do |hour|
+					Time.new(day.year, day.month, day.day, hour, 0, 0)
+				end
+			else
+				range = (14..20).map do |hour|
+					Time.new(day.year, day.month, day.day, hour, 0, 0)
+				end
+			end
 
-    		hash[day.to_s] = available.map do |slot|
-      		{
-        		time: slot.iso8601,
-        		label: slot.strftime("%-I:%M %p") # Eastern Time label
-      		}
-    		end
-  		end
+			range = range.reject { |hour| booked.include?(hour) }
+			hash[day.to_s] = range.map do |time|
+			{
+				time: time.iso8601,
+				label: time.strftime("%-I:%M %p"),
+				day_label: time.strftime("%a, %b %-d") # e.g., "Sun, May 25"
+			}
+			end unless range.empty?
+		end
 	end
 end

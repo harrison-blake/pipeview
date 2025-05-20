@@ -27,23 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("next-week")!;
 
   function renderWeek(index: number) {
-    dayButtonsContainer.innerHTML = "";
+  dayButtonsContainer.innerHTML = "";
 
-    weeks[index].forEach((dayStr) => {
-      const date = new Date(dayStr);
-      const label = date.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  weeks[index].forEach((dayStr) => {
+    const daySlots = allSlotsByDay[dayStr];
+    if (!daySlots || daySlots.length === 0) return;
 
-      const btn = document.createElement("button");
-      btn.className = "day-button px-4 py-2 rounded border border-gray-300 hover:bg-emerald-100 transition";
-      btn.setAttribute("type", "button");
-      btn.setAttribute("data-day", dayStr);
-      btn.textContent = label;
+    // Use preformatted day label from the first slot
+    const label = daySlots[0].day_label;
 
-      btn.addEventListener("click", () => selectDay(dayStr, btn));
+    const btn = document.createElement("button");
+    btn.className = "day-button px-4 py-2 rounded border border-gray-300 hover:bg-emerald-100 transition";
+    btn.setAttribute("type", "button");
+    btn.setAttribute("data-day", dayStr);
+    btn.textContent = label;
 
-      dayButtonsContainer.appendChild(btn);
-    });
-  }
+    btn.addEventListener("click", () => selectDay(dayStr, btn));
+
+    dayButtonsContainer.appendChild(btn);
+  });
+}
+
 
   function selectDay(dayStr: string, selectedBtn: HTMLButtonElement) {
     const slots = allSlotsByDay[dayStr] || [];
@@ -55,11 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedBtn.classList.add("bg-emerald-700", "text-white");
 
     slots.forEach((slot) => {
-      const slotDate = new Date(slot.time);
-      const label = slotDate.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-
       const btn = document.createElement("button");
-      btn.textContent = label;
+      btn.textContent = slot.label; // <-- use label directly from backend
       btn.className = "px-3 py-2 rounded bg-gray-100 hover:bg-emerald-200 w-full";
 
       btn.addEventListener("click", () => {
@@ -68,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
           b.classList.remove("bg-emerald-700", "text-white");
           b.classList.add("bg-gray-100");
         });
-        btn.classList.add("bg-emerald-700", "text-white");
-        btn.classList.remove("bg-gray-100");
+      btn.classList.add("bg-emerald-700", "text-white");
+      btn.classList.remove("bg-gray-100");
       });
 
       timeSlotContainer.appendChild(btn);
