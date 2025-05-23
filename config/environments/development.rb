@@ -3,6 +3,19 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # smtp config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: "localhost",
+    user_name: "apikey",
+    password: Rails.application.credentials.dig(:smtp, :api),
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 

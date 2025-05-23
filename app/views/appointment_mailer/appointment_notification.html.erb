@@ -1,0 +1,8 @@
+<p>A new appointment has been scheduled:</p>
+
+<ul>
+  <li><strong>Name:</strong> <%= @appointment.name %></li>
+  <li><strong>Email:</strong> <%= @appointment.email %></li>
+  <li><strong>Phone:</strong> <%= @appointment.phone %></li>
+  <li><strong>Time:</strong> <%= @appointment.preferred_time.strftime("%A, %B %e at %l:%M %p") %></li>
+</ul>
