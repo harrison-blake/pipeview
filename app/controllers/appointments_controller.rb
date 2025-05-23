@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
     	@appointment = Appointment.new(appointment_params)
 
     	if @appointment.save
-    		AppointmentMailer.appointment_notification(@appointment).deliver_later
+    		AppointmentMailer.appointment_notification(@appointment.id, User.first.email).deliver_later
       		flash[:notice] = "Thanks #{@appointment.name}! Your inspection is booked for #{@appointment.preferred_time.strftime('%A, %B %e at %l:%M %p')}."
       		redirect_to root_path
     	else

@@ -1,11 +1,16 @@
 class AppointmentMailer < ApplicationMailer
   default from: "anthony.scott@pipeview.pro"
 
-  def appointment_notification(appointment)
-    @appointment = appointment
+  def appointment_notification(app_id, email)
+    @appointment = Appointment.find_by(id: app_id)
+    unless @appointment
+      Rails.logger.warn "[AppointmentMailer] Appointment not found for ID=#{appointment_id}"
+      return
+    end
+
     mail(
-      to: User.first.email,
-      subject: "New Appointment #{appointment.preferred_time.strftime("%A, %B %-d at %-l:%M %p")}",
+      to: email,
+      subject: "New Appointment #{@appointment.preferred_time.strftime("%A, %B %-d at %-l:%M %p")}",
     )
   end
 
