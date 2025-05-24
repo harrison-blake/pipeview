@@ -10,8 +10,7 @@ port ENV.fetch("PORT", 3000)
 plugin :tmp_restart
 
 # You can either set the env var, or check for development
-plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"] || Rails.env.development?
-
+plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"] || ENV["RACK_ENV"] == "development"
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
