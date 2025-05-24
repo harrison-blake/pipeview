@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
 
 	private
 	def appointment_params
-    	params.require(:appointment).permit(:name, :email, :phone, :preferred_time)
+    	params.require(:appointment).permit(:name, :email, :phone, :preferred_time, :notes)
   	end
 
 	def generate_slots_by_day(start_date)

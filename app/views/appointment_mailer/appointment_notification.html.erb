@@ -6,3 +6,8 @@
   <li><strong>Phone:</strong> <%= @appointment.phone %></li>
   <li><strong>Time:</strong> <%= @appointment.preferred_time.strftime("%A, %B %e at %l:%M %p") %></li>
 </ul>
+
+<% if @appointment.notes.present? %>
+  Notes:
+  <%= @appointment.notes %>
+<% end %>
