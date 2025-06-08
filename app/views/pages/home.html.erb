@@ -1,70 +1,78 @@
-<div class="w-full max-w-4xl bg-overlay shadow-xl rounded-2xl p-10 space-y-8">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PipeView Inspections</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#0b1a34] text-white font-sans">
+    <main class="max-w-2xl mx-auto px-6 py-16 space-y-10">
+      <header class="text-center">
+        <h1 class="text-4xl font-bold tracking-tight mb-2">PipeView Inspections</h1>
+        <p class="text-lg text-gray-300">Family-owned. Thorough. Trusted.</p>
+      </header>
 
-  <!-- Heading + Intro -->
-  <h1 class="text-4xl font-bold text-emerald-800 text-center">Welcome to PipeView Inspections</h1>
+      <!-- Tab Buttons -->
+      <div class="flex justify-center space-x-4 mb-8">
+        <button data-tab-button="about  " class="bg-emerald-700 text-white px-4 py-2 rounded">About</button>
+        <button data-tab-button="services" class="bg-gray-200 text-gray-800 px-4 py-2 rounded">Services</button>
+        <button data-tab-button="contact" class="bg-gray-200 text-gray-800 px-4 py-2 rounded">Contact</button>
+        <button data-tab-button="hours" class="bg-gray-200 text-gray-800 px-4 py-2 rounded">Hours</button>
+      </div>
 
-  <!-- Tabs -->
-  <div class="flex space-x-4 justify-center my-8">
-    <button data-tab-button="about" class="px-4 py-2 rounded bg-emerald-700 text-white">About</button>
-    <button data-tab-button="services" class="px-4 py-2 rounded bg-gray-200 text-gray-800">Services</button>
-    <button data-tab-button="contact" class="px-4 py-2 rounded bg-gray-200 text-gray-800">Contact</button>
-  </div>
+      <!-- About -->
+      <section data-tab-content="about">
+        <h2 class="text-xl font-semibold border-b border-white pb-1 mb-2">About</h2>
+        <p class="text-gray-200 leading-relaxed">
+          We are a family-owned and operated business based in Lutherville-Timonium, Maryland...
+        </p>
+        <p class="text-gray-200 leading-relaxed mt-4">
+          Our mission is to provide clear, detailed video documentation and honest assessments...
+        </p>
+        <p class="text-gray-200 leading-relaxed mt-4">
+          Thank you for considering PipeView Inspections — we look forward to serving you.
+        </p>
+      </section>
 
-  <!-- Tab Content: About (default visible) -->
-  <div data-tab-content="about">
-    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">About</h2>
-    <p class="text-lg text-gray-800 leading-relaxed">
-      We are a family-owned and operated business based in Lutherville-Timonium, Maryland. Our lead technician brings over five years of experience inspecting sewer lines for corrosion, breaks, roots, bellies, and pipe separations.
-    </p>
+      <!-- Services -->
+      <section data-tab-content="services" class="hidden">
+        <h2 class="text-xl font-semibold border-b border-white pb-1 mb-2">Services</h2>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Camera through the cleanout – <span class="font-medium text-white">$285</span></li>
+          <li>Camera through the toilet – <span class="font-medium text-white">$350</span></li>
+        </ul>
+        <p class="text-gray-200 mt-2">
+          We can provide video documentation via email or flash drive.
+        </p>
+      </section>
 
-    <p class="text-lg text-gray-800 leading-relaxed">
-      Our mission is to provide clear, detailed video documentation and honest assessments to our clients. We treat every property with the utmost respect, just as if it were our own.
-    </p>
+      <!-- Contact -->
+      <section data-tab-content="contact" class="hidden">
+        <h2 class="text-xl font-semibold border-b border-white pb-1 mb-2">Contact</h2>
+        <p class="text-gray-200">
+          Email: <a href="mailto:pipeviewinspections@gmail.com" class="underline text-white">pipeviewinspections@gmail.com</a><br />
+          Phone: <a href="tel:4438419633" class="underline text-white">443 841-9633</a>
+        </p>
+        <div class="mt-4">
+          <a
+            href="/appointments/new"
+            class="inline-block bg-white text-black font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition"
+          >
+            Schedule an Inspection
+          </a>
+        </div>
+      </section>
 
-    <p class="text-lg text-gray-800 leading-relaxed">
-      Thank you for considering PipeView Inspections — we look forward to serving you with professionalism and care.
-    </p>
-  </div>
-
-  <!-- Tab Content: Services (initially hidden) -->
-  <div data-tab-content="services" class="hidden">
-    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">Services</h2>
-
-    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-      <li>Camera through the cleanout – <span class="font-medium">$285</span></li>
-      <li>Camera through the toilet – <span class="font-medium">$350</span></li>
-    </ul>
-
-    <p class="text-lg text-gray-700 mt-2">
-      We can provide video documentation via email or flash drive.
-    </p>
-  </div>
-
-  <!-- Tab Content: Contact (initially hidden) -->
-  <div data-tab-content="contact" class="hidden">
-    <h2 class="text-2xl font-semibold text-emerald-800 mb-2">Contact</h2>
-
-    <p class="text-lg text-gray-700">
-      Email us at 
-      <a href="mailto:pipeviewinspections@gmail.com" class="text-emerald-800 font-medium">pipeviewinspections@gmail.com</a> 
-      or call 
-      <a href="tel:4438419633" class="text-emerald-800 font-medium">443 841-9633</a>.
-    </p>
-
-    <p class="text-lg text-gray-700">
-      We respond within 24 hours during our regular operating hours.
-    </p>
-    <div class="text-center mt-6">
-      <%= link_to "Schedule an Inspection", new_appointment_path, class: "inline-block bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow transition hover:bg-emerald-800" %>
-    </div>
-  </div>
-
-  <!-- Operating Hours (Always visible) -->
-  <hr class="border-gray-300 my-6">
-  <h2 class="text-2xl font-semibold text-emerald-800">Operating Hours</h2>
-  <ul class="list-disc list-inside text-gray-700 text-lg space-y-1">
-    <li>Monday – Friday: 2 PM – 8 PM</li>
-    <li>Saturday: 8 AM – 6 PM</li>
-    <li>Sunday: 8 AM – 6 PM</li>
-  </ul>
-</div>
+      <!-- Operating Hours -->
+      <section data-tab-content="hours" class="hidden">
+        <h2 class="text-xl font-semibold border-b border-white pb-1 mb-2">Operating Hours</h2>
+        <ul class="list-disc list-inside text-gray-200">
+          <li>Monday – Friday: 2 PM – 8 PM</li>
+          <li>Saturday: 8 AM – 6 PM</li>
+          <li>Sunday: 8 AM – 6 PM</li>
+        </ul>
+      </section>
+    </main>

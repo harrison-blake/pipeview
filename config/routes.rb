@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "pages#home"
-  resources :appointments, only: [:new, :create]
+  resources :appointments, only: [:new, :create, :destroy]
 
   namespace :admin do
     get "login", to: "sessions#new"
