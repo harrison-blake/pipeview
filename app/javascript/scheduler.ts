@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = daySlots[0].day_label;
 
     const btn = document.createElement("button");
-    btn.className = "day-button px-4 py-2 rounded border border-gray-300 hover:bg-emerald-100 transition";
+    btn.className = "time-slot px-4 py-2 rounded bg-[#13294b] text-white border border-emerald-600 hover:bg-emerald-600 transition";
     btn.setAttribute("type", "button");
     btn.setAttribute("data-day", dayStr);
     btn.textContent = label;
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     slots.forEach((slot) => {
       const btn = document.createElement("button");
       btn.textContent = slot.label; // <-- use label directly from backend
-      btn.className = "px-3 py-2 rounded bg-gray-100 hover:bg-emerald-200 w-full";
+      btn.className = "px-3 py-2 rounded bg-[#13294b] text-white hover:bg-emerald-700 border border-emerald-600 w-full transition";
 
       btn.addEventListener("click", () => {
         hiddenInput.value = slot.time;
