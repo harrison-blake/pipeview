@@ -38,14 +38,33 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
+    <nav class="w-full bg-[#0b1a34] text-white px-6 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between text-sm font-semibold">
+
+    <% unless current_page?(root_path) %>
+      <%= link_to "Home", root_path, class: "text-white hover:underline" %>
+    <% else %>
+      <span></span> <!-- keeps spacing consistent when Home isn't shown -->
+    <% end %>
+
+    <% if current_page?(root_path) || current_page?(new_appointment_path) %>
+      <%= link_to "Admin Login", admin_login_path, class: "text-emerald-400 hover:underline" %>
+    <% elsif request.path.start_with?("/admin") %>
+      <%= link_to "Logout",admin_logout_path, method: :delete, class: "text-red-400 hover:underline" %>
+    <% end %>
+
+  </div>
+</nav>
+
+
     <% if flash[:notice] %>
-      <div class="text-center bg-green-600 text-white p-4 m-4 rounded-xl">
+      <div class="mx-auto max-w-xl bg-[#0e264d] border border-emerald-500 text-emerald-300 text-center font-medium px-6 py-4 rounded-lg mb-6">
         <%= flash[:notice] %>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
-      <div class="text-center bg-red-600 text-white p-4 m-4 rounded-xl">
+      <div class="mx-auto max-w-xl bg-[#2b1a1a] border border-red-500 text-red-300 text-center font-medium px-6 py-4 rounded-lg mb-6">
         <%= flash[:alert] %>
       </div>
     <% end %>
