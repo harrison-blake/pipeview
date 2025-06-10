@@ -1,0 +1,41 @@
+<div class="max-w-2xl mx-auto text-white p-8 space-y-6">
+  <h1 class="text-2xl font-bold mb-6 border-b border-white pb-2">Appointment Details</h1>
+
+  <div class="space-y-6 divide-y divide-white/20">
+    <div class="pb-4">
+      <label class="block text-sm font-semibold text-white mb-1">Name</label>
+      <p><%= @appointment.name %></p>
+    </div>
+
+    <div class="pt-4 pb-4">
+      <label class="block text-sm font-semibold text-white mb-1">Email</label>
+      <p><%= @appointment.email %></p>
+    </div>
+
+    <div class="pt-4 pb-4">
+      <label class="block text-sm font-semibold text-white mb-1">Phone</label>
+      <p><%= @appointment.phone %></p>
+    </div>
+
+    <div class="pt-4 pb-4">
+      <label class="block text-sm font-semibold text-white mb-1">Preferred Time</label>
+      <p>
+        <%= @appointment.preferred_time.in_time_zone("Eastern Time (US & Canada)").strftime("%A, %B %-d at %-l:%M %p") %>
+      </p>
+    </div>
+
+    <div class="pt-4">
+      <label class="block text-sm font-semibold text-white mb-1">Notes</label>
+      <p class="whitespace-pre-line"><%= @appointment.notes.presence || "—" %></p>
+    </div>
+  </div>
+
+  <div class="flex space-x-4 mt-6">
+    <%= link_to "Edit", edit_admin_appointment_path(@appointment), class: "bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700" %>
+    <%= link_to "Back", admin_appointments_path, class: "text-gray-300 hover:underline" %>
+    <%= link_to "Delete", admin_appointment_path(@appointment),
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        class: "text-red-400 hover:underline" %>
+  </div>
+</div>

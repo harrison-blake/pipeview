@@ -33,6 +33,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "application", type: "module", defer: true %>
+
   </head>
 
   <body class="min-h-screen flex flex-col">

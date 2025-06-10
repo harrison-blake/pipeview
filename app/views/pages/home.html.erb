@@ -27,7 +27,7 @@
       <section data-tab-content="about">
         <h2 class="text-xl font-semibold border-b border-white pb-1 mb-2">About</h2>
         <p class="text-gray-200 leading-relaxed">
-          We are family owned and operated out of Lutherville- Timonium. Our lead tech has five years’ experience inspecting sewer lines for corrosion, breaks, roots, bellies and separation of pipe. Our job is to provide understanding and give video documentation to our clients. When we are in your home, we will treat it as our own. Having respect for your property is a top priority.
+          We are family owned and operated out of Lutherville Timonium. Our lead tech has five years’ experience inspecting sewer lines for corrosion, breaks, roots, bellies and separation of pipe. Our job is to provide understanding and give video documentation to our clients. When we are in your home, we will treat it as our own. Having respect for your property is a top priority.
         </p>
       </section>
 
@@ -51,12 +51,10 @@
           Phone: <a href="tel:4438419633" class="underline text-white">443 841-9633</a>
         </p>
         <div class="mt-4">
-          <a
-            href="/appointments/new"
-            class="inline-block bg-white text-black font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition"
-          >
-            Schedule an Inspection
-          </a>
+          <%= 
+            link_to "Schedule an Inspection", new_appointment_path, 
+            class: "inline-block bg-white text-black font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition" 
+          %>
         </div>
       </section>
 
